@@ -201,8 +201,60 @@ function handleDisplayRequest() {
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-            <title>影视列表</title>
+            <title>影视列表展示</title>
         </head>
+        <style>
+                body { 
+                    background-color: #121212; 
+                    color: #fff; 
+                    font-family: Arial, sans-serif; 
+                    margin: 0; 
+                    padding: 0px; 
+                    padding-top: env(safe-area-inset-top);
+                    padding-bottom: calc(env(safe-area-inset-bottom) + 20px);
+                    min-height: 100vh;
+                    overflow-x: hidden;
+                }
+                .grid { 
+                    display: grid;   
+                    grid-template-columns: repeat(3, 1fr); 
+                    gap: 20px; 
+                    margin-left:16px;
+                }
+                .item { 
+                    text-align: center; 
+                    cursor: pointer; 
+                    margin-left:-20px;
+                    padding:10px;
+                }
+                .item img { 
+                    width: 100%; 
+                    max-width: 150px; 
+                    height: 200px; 
+                    border-radius: 8px; 
+                    object-fit: cover; 
+                }
+                .item p { 
+                    margin: 8px 0; 
+                    font-size: 14px; 
+                }
+                h1 { 
+                    text-align: center; 
+                    margin-bottom: 30px; 
+                    margin-left:-25px;
+                }
+                .fixed-bottom {
+                    position: fixed;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    background: rgba(18, 18, 18, 0.9);
+                    padding: 10px;
+                    text-align: center;
+                    z-index: 999;
+                    padding-bottom: env(safe-area-inset-bottom);
+                }
+            </style>
         <body>
             <h1>影视列表</h1>
             <div class="grid">
@@ -255,57 +307,93 @@ function handleDisplayRequest() {
         <title>${vodTitle}</title>
     </head>
     <style>
-                body { 
-                    background-color: #121212; 
-                    color: #fff; 
-                    font-family: Arial, sans-serif; 
-                    margin: 0; 
-                    padding: 0px; 
-                    padding-top: env(safe-area-inset-top);
-                    padding-bottom: calc(env(safe-area-inset-bottom) + 20px);
-                    min-height: 100vh;
-                    overflow-x: hidden;
-                }
-                .grid { 
-                    display: grid;   
-                    grid-template-columns: repeat(3, 1fr); 
-                    gap: 20px; 
-                    margin-left:16px;
-                }
-                .item { 
-                    text-align: center; 
-                    cursor: pointer; 
-                    margin-left:-20px;
-                    padding:10px;
-                }
-                .item img { 
-                    width: 100%; 
-                    max-width: 150px; 
-                    height: 200px; 
-                    border-radius: 8px; 
-                    object-fit: cover; 
-                }
-                .item p { 
-                    margin: 8px 0; 
-                    font-size: 14px; 
-                }
-                h1 { 
-                    text-align: center; 
-                    margin-bottom: 30px; 
-                    margin-left:-25px;
-                }
-                .fixed-bottom {
-                    position: fixed;
-                    bottom: 0;
-                    left: 0;
-                    width: 100%;
-                    background: rgba(18, 18, 18, 0.9);
-                    padding: 10px;
-                    text-align: center;
-                    z-index: 999;
-                    padding-bottom: env(safe-area-inset-bottom);
-                }
-            </style>
+            body {
+                margin: 0;
+                padding: 0;
+                background: #121212;
+                color: #fff;
+                font-family: Arial, sans-serif;
+                padding-top: env(safe-area-inset-top);
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                overflow-x: hidden;
+            }
+            .float-back {
+                position: fixed;
+                top: 40px;
+                left: 20px;
+                width: 44px;
+                height: 44px;
+                background:rgb(243,156,18);
+                border-radius: 20%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 25px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+                z-index: 10000;
+                border: none;
+                cursor: pointer;
+                -webkit-tap-highlight-color: transparent;
+            }
+            .float-back:active {
+                transform: scale(0.95);
+            }
+            .content-container {
+                padding: 15px;
+                padding-top: calc(env(safe-area-inset-top) + 30px);
+                padding-bottom: calc(env(safe-area-inset-bottom) + 80px);
+                flex: 1;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .movie-info {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .movie-info img {
+                width: 100%;
+                max-width: 300px;
+                border-radius: 10px;
+                margin: 10px auto;
+                display: block;
+            }
+            .movie-info h2 {
+                margin: 10px 0;
+            }
+            .episodes {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                gap: 10px;
+                padding: 15px;
+            }
+            .episode-btn {
+                text-decoration: none;
+                background-color: #f39c12;
+                color: white;
+                padding: 10px;
+                border-radius: 5px;
+                text-align: center;
+                font-size: 14px;
+            }
+            .episode-btn:hover {
+                background-color: #e67e22;
+            }
+            .fixed-bottom {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background: rgba(18, 18, 18, 0.9);
+                padding: 10px;
+                text-align: center;
+                z-index: 999;
+                padding-bottom: env(safe-area-inset-bottom);
+            }
+        </style>
+    
     <body>
         <div id="content" class="content-container">
             <div class="movie-info">
