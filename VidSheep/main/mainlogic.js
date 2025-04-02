@@ -202,7 +202,6 @@ function handleDisplayRequest() {
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
             <title>影视列表</title>
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SheepFJ/VidSheep/VidSheep/css/playlist.css">
         </head>
         <body>
             <h1>影视列表</h1>
@@ -254,7 +253,6 @@ function handleDisplayRequest() {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
         <title>${vodTitle}</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SheepFJ/VidSheep/VidSheep/css/playpage.css">
     </head>
     <body>
         <div id="content" class="content-container">
@@ -298,9 +296,10 @@ function handleMainPageRequest() {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-
     <title>影视搜索</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SheepFJ/VidSheep/VidSheep/css/main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SheepFJ/VidSheep/VidSheep/css/playlist.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SheepFJ/VidSheep/VidSheep/css/playpage.css">
 </head>
 <body>
     <!-- 顶部状态栏背景 -->
