@@ -218,6 +218,7 @@ function handleDisplayRequest() {
                     display: grid;   
                     grid-template-columns: repeat(3, 1fr); 
                     gap: 20px; 
+                    margin-left:16px;
                 }
                 .item { 
                     text-align: center; 
@@ -435,9 +436,6 @@ function handleMainPageRequest() {
     <meta charset="UTF-8">
     <meta name="viewport"
         content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="theme-color" content="#1e1e1e">
     <title>影视搜索</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SheepFJ/VidSheep/VidSheep/css/main.css">
 </head>
@@ -476,6 +474,15 @@ function handleMainPageRequest() {
             });
             document.getElementById(buttonId).classList.add('active');
         }
+        //动画载入函数
+        function loadAnimation(results) {
+            results.innerHTML = \`
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
+                    <div class="loading"></div>
+                    <div class="loading-text">加载中...</div>
+                </div>
+            \`;
+        }
 
         function search() {
             var wd = encodeURIComponent(document.getElementById("searchInput").value);
@@ -488,12 +495,7 @@ function handleMainPageRequest() {
 
             // 显示加载提示
             var results = document.getElementById("results");
-            results.innerHTML = \`
-                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
-                    <div class="loading"></div>
-                    <div class="loading-text">请耐心等待</div>
-                </div>
-            \`;
+            loadAnimation(results);
 
             var apiUrl = "https://api.sheep.com/sheep/videoPolymerization/videoword/" + source + "/?wd=" + wd;
 
@@ -519,6 +521,13 @@ function handleMainPageRequest() {
 
                         var title = document.createElement("p");
                         title.textContent = vod.vod_name;
+                        title.style.whiteSpace = "normal"; // 允许文字换行
+                        title.style.textAlign = "center"; // 文字居中对齐
+                        title.style.height = "40px"; // 固定高度,显示两行
+                        title.style.overflow = "hidden"; // 超出隐藏
+                        title.style.display = "-webkit-box";
+                        title.style.webkitLineClamp = "2"; // 最多显示两行
+                        title.style.webkitBoxOrient = "vertical";
 
                         container.appendChild(img);
                         container.appendChild(title);
@@ -535,13 +544,9 @@ function handleMainPageRequest() {
         }
 
         function loadVideoInfo(vodId) {
-            // 显示加载提示
-            document.getElementById("main-container").innerHTML = \`
-                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
-                    <div class="loading"></div>
-                    <div class="loading-text">加载详情中...</div>
-                </div>
-            \`;
+            
+            var results = document.getElementById("main-container");
+            loadAnimation(results);
             
             var apiUrl = "https://api.sheep.com/sheep/videoPolymerization/zhanshi/sheep_vod_info_" + vodId;
             
@@ -571,30 +576,18 @@ function handleMainPageRequest() {
                 </div>
                 <div id="results"></div>
             \`;
-            
-            // 确保状态栏背景存在
-            ensureStatusBarBackground();
         }
 
         function showList() {
             currentPage = 'list';
             setActiveButton('listBtn');
-            document.getElementById("main-container").innerHTML = \`
-                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
-                    <div class="loading"></div>
-                    <div class="loading-text">请耐心等待</div>
-                </div>
-            \`;
-            
-            // 确保状态栏背景存在
-            ensureStatusBarBackground();
+            var results = document.getElementById("main-container");
+            loadAnimation(results);
             
             fetch("https://api.sheep.com/sheep/videoPolymerization/zhanshi/sheep_vod_info_1000")
                 .then(res => res.text())
                 .then(html => {
                     document.getElementById("main-container").innerHTML = html;
-                    // 在加载新内容后再次确保状态栏背景存在
-                    ensureStatusBarBackground();
                 })
                 .catch(err => {
                     console.error("加载列表失败", err);
@@ -698,51 +691,10 @@ function handleMainPageRequest() {
                     </div>
                 </div>
                 
-                <style>
-                    .collapsible-container {
-                        width: 100%;
-                    }
-                    .collapsible-item {
-                        margin-bottom: 10px;
-                        border-radius: 8px;
-                        overflow: hidden;
-                        background: rgba(30, 30, 30, 0.6);
-                    }
-                    .collapsible-header {
-                        padding: 15px;
-                        background: rgba(50, 50, 50, 0.6);
-                        color: #f39c12;
-                        font-weight: bold;
-                        cursor: pointer;
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        transition: background 0.3s;
-                    }
-                    .collapsible-header:hover {
-                        background: rgba(60, 60, 60, 0.6);
-                    }
-                    .collapsible-content {
-                        max-height: 0;
-                        overflow: hidden;
-                        transition: max-height 0.3s ease-out;
-                    }
-                    .arrow {
-                        transition: transform 0.3s;
-                    }
-                    .active .arrow {
-                        transform: rotate(180deg);
-                    }
-                    .active + .collapsible-content {
-                        max-height: 1000px; /* 足够大的高度以显示内容 */
-                    }
-                </style>
+                
             \`;
-            
-            // 确保状态栏背景存在
-            ensureStatusBarBackground();
-            
 
+            
             // 定义toggleCollapsible函数在全局作用域
             window.toggleCollapsible = function (element) {
                 // 先关闭所有已打开的折叠项
@@ -777,26 +729,6 @@ function handleMainPageRequest() {
                 });
             }, 100);
         }
-        // 确保状态栏背景元素存在的辅助函数
-        function ensureStatusBarBackground() {
-            if (!document.querySelector('.status-bar-background')) {
-                const statusBar = document.createElement('div');
-                statusBar.className = 'status-bar-background';
-                document.body.insertBefore(statusBar, document.body.firstChild);
-            }
-        }
-        
-        // 在页面加载完成后确保状态栏背景存在
-        document.addEventListener('DOMContentLoaded', function() {
-            ensureStatusBarBackground();
-            
-            // 当按下回车键时触发搜索
-            document.getElementById('searchInput').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    search();
-                }
-            });
-        });
     </script>
 
 </body>

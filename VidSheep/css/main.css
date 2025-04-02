@@ -18,7 +18,7 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('https://mfiles.alphacoders.com/824/824251.jpg');
+    background-image: url('https://cn.bing.com/th?id=OHR.TicanFrog_ZH-CN8949758487_1080x1920.jpg&rf=LaDigue_1080x1920.jpg&pid=HpEdgeAn');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -206,9 +206,9 @@ button:hover {
     bottom: -35px;
     left: 0;
     width: 100%;
-    height: calc(53px + env(safe-area-inset-bottom, 0px));
+    height: calc(45px + env(safe-area-inset-bottom, 0px));
     /* 适配 iPhone X 及以上 */
-    background: rgb(30, 30, 30);
+    background: rgba(30, 30, 30, 0.4);
     /* 可调透明度 */
     display: flex;
     justify-content: space-around;
