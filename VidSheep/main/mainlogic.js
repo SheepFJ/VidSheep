@@ -473,7 +473,7 @@ body::before {
     left: 0;
     right: 0;
     height: env(safe-area-inset-top, 0px);
-    background-color: rgba(12, 11, 14, 1);
+    background-color: rgba(12, 11, 14, 0);
     z-index: 999;
 }
 
@@ -954,7 +954,45 @@ body {
                         </div>
                     </div>
                 </div>
-                
+                <style>
+                    .collapsible-container {
+                        width: 100%;
+                    }
+                    .collapsible-item {
+                        margin-bottom: 10px;
+                        border-radius: 8px;
+                        overflow: hidden;
+                        background: rgba(30, 30, 30, 0.6);
+                    }
+                    .collapsible-header {
+                        padding: 15px;
+                        background: rgba(50, 50, 50, 0.6);
+                        color: #f39c12;
+                        font-weight: bold;
+                        cursor: pointer;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        transition: background 0.3s;
+                    }
+                    .collapsible-header:hover {
+                        background: rgba(60, 60, 60, 0.6);
+                    }
+                    .collapsible-content {
+                        max-height: 0;
+                        overflow: hidden;
+                        transition: max-height 0.3s ease-out;
+                    }
+                    .arrow {
+                        transition: transform 0.3s;
+                    }
+                    .active .arrow {
+                        transform: rotate(180deg);
+                    }
+                    .active + .collapsible-content {
+                        max-height: 1000px; /* 足够大的高度以显示内容 */
+                    }
+                </style>
                 
             \`;
 
