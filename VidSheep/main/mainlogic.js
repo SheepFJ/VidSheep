@@ -202,6 +202,40 @@ function handleDisplayRequest() {
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
             <title>影视列表</title>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SheepFJ/VidSheep/VidSheep/css/main.css">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SheepFJ/VidSheep/VidSheep/css/playlist.css">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SheepFJ/VidSheep/VidSheep/css/playpage.css">
+            <style>
+                .grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                    gap: 15px;
+                    padding: 15px;
+                }
+                .item {
+                    cursor: pointer;
+                    text-align: center;
+                    border-radius: 8px;
+                    overflow: hidden;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                    transition: transform 0.3s;
+                }
+                .item:hover {
+                    transform: translateY(-5px);
+                }
+                .item img {
+                    width: 100%;
+                    height: 200px;
+                    object-fit: cover;
+                }
+                .item p {
+                    padding: 8px;
+                    margin: 0;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            </style>
         </head>
         <body>
             <h1>影视列表</h1>
@@ -218,7 +252,9 @@ function handleDisplayRequest() {
                     fetch("https://api.sheep.com/sheep/videoPolymerization/zhanshi/sheep_vod_info_" + index)
                         .then(res => res.text())
                         .then(html => {
-                            document.documentElement.innerHTML = html.replace(/<html[^>]*>|<\/html>/g, '');
+                            document.open();
+                            document.write(html);
+                            document.close();
                         })
                         .catch(err => console.error("加载详情失败", err));
                 }
@@ -253,6 +289,53 @@ function handleDisplayRequest() {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
         <title>${vodTitle}</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SheepFJ/VidSheep/VidSheep/css/main.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SheepFJ/VidSheep/VidSheep/css/playlist.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SheepFJ/VidSheep/VidSheep/css/playpage.css">
+        <style>
+            .movie-info {
+                padding: 15px;
+                text-align: center;
+            }
+            .movie-info img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 8px;
+                margin: 15px 0;
+            }
+            .episodes {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                padding: 15px;
+                justify-content: center;
+            }
+            .episode-btn {
+                padding: 8px 15px;
+                background-color: #f0f0f0;
+                border-radius: 5px;
+                text-decoration: none;
+                color: #333;
+                transition: background-color 0.3s;
+            }
+            .episode-btn:hover {
+                background-color: #e0e0e0;
+            }
+            .float-back {
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background-color: rgba(0,0,0,0.7);
+                color: white;
+                border: none;
+                font-size: 20px;
+                cursor: pointer;
+                z-index: 1000;
+            }
+        </style>
     </head>
     <body>
         <div id="content" class="content-container">
@@ -277,7 +360,9 @@ function handleDisplayRequest() {
                 fetch("https://api.sheep.com/sheep/videoPolymerization/zhanshi/sheep_vod_info_1000")
                     .then(res => res.text())
                     .then(html => {
-                        document.documentElement.innerHTML = html.replace(/<html[^>]*>|<\/html>/g, '');
+                        document.open();
+                        document.write(html);
+                        document.close();
                     })
                     .catch(err => console.error("加载列表失败", err));
             }
@@ -326,7 +411,18 @@ function handleMainPageRequest() {
         <div class="nav-button" id="profileBtn" onclick="showProfile()">我的</div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/gh/SheepFJ/VidSheep/VidSheep/js/main.js">
+    <script src="https://cdn.jsdelivr.net/gh/SheepFJ/VidSheep/VidSheep/js/main.js"></script>
+    <script>
+        function showList() {
+            fetch("https://api.sheep.com/sheep/videoPolymerization/zhanshi/sheep_vod_info_1000")
+                .then(res => res.text())
+                .then(html => {
+                    document.open();
+                    document.write(html);
+                    document.close();
+                })
+                .catch(err => console.error("加载列表失败", err));
+        }
     </script>
 </body>
 </html>`;
