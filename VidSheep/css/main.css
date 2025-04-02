@@ -203,10 +203,10 @@ button:hover {
 /* 底部导航栏 */
 #bottom-nav {
     position: fixed;
-    bottom: -30px;
+    bottom: -35px;
     left: 0;
     width: 100%;
-    height: calc(60px + env(safe-area-inset-bottom, 0px));
+    height: calc(53px + env(safe-area-inset-bottom, 0px));
     /* 适配 iPhone X 及以上 */
     background: rgb(30, 30, 30);
     /* 可调透明度 */

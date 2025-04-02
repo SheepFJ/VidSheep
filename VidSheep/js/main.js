@@ -147,7 +147,7 @@ function showProfile() {
                             </ul>
                             
                             <h3 style="color: #f39c12; margin-top: 20px;">关注/反馈</h3>
-                            <p>GitHub: <a href="https://github.com/SheepFJ/QuantumultX" style="color: #3498db; text-decoration: none;" target="_blank">SheepFJ</a></p>
+                            <p>GitHub: <a href="https://github.com/SheepFJ/VidSheep" style="color: #3498db; text-decoration: none;" target="_blank">SheepFJ</a></p>
                             <p>TG群组: <a href="https://t.me/sheep_007_xiaoyang" style="color: #3498db; text-decoration: none;" target="_blank">Sheep交流反馈</a></p>
                             
             
