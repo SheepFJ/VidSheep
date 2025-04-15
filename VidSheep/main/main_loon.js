@@ -9,9 +9,9 @@ GitHub：https://github.com/SheepFJ/QuantumultX
 ================ Loon==============
 
 [Script]
-http-response ^https:\/\/api\.sheep\.com\/sheep\/videoPolymerization\/(?:zhanshi\/sheep_vod_info_(\d+)|videoword\/([^\/]+)|) script-path=https://raw.githubusercontent.com/SheepFJ/VidSheep/main/VidSheep/main/mainlogic.js,requires-body=false,tag=VidSheep
+http-response ^https:\/\/api\.sheep\.com\/sheep\/videoPolymerization\/?$ script-path=https://raw.githubusercontent.com/SheepFJ/VidSheep69/refs/heads/main/main/mainlogic.js,requires-body=false,tag=VidSheep
+http-response ^https:\/\/api\.sheep\.com\/sheep\/videoPolymerization\/(api|userinfo\/username\/([^\/]+)|videoword\/([^\/]+)\/\?wd=([^\/]+)|videolist\/([^\/]+)) script-path=https://raw.githubusercontent.com/SheepFJ/VidSheep69/refs/heads/main/main/api.js,requires-body=false,tag=VidSheepApi
 [mitm]
 hostname = api.sheep.com
 
 *************************************/
-
