@@ -9,8 +9,8 @@ GitHub：https://github.com/SheepFJ/QuantumultX
 ================ Loon==============
 
 [Script]
-http-response ^https:\/\/api\.sheep\.com\/sheep\/videoPolymerization\/?$ script-path=https://raw.githubusercontent.com/SheepFJ/VidSheep2.0/refs/heads/main/main/mainlogic.js,requires-body=false,tag=VidSheep
-http-response ^https:\/\/api\.sheep\.com\/sheep\/videoPolymerization\/(api|userinfo\/username\/([^\/]+)|videoword\/([^\/]+)\/\?wd=([^\/]+)|videolist\/([^\/]+)) script-path=https://raw.githubusercontent.com/SheepFJ/VidSheep2.0/refs/heads/main/main/api.js,requires-body=false,tag=VidSheepApi
+http-response ^https:\/\/api\.sheep\.com\/sheep\/videoPolymerization\/?$ script-path=https://raw.githubusercontent.com/SheepFJ/VidSheep/refs/heads/main/VidSheep2.0/main/mainlogic.js,requires-body=false,tag=VidSheep2.0
+http-response ^https:\/\/api\.sheep\.com\/sheep\/videoPolymerization\/(api|userinfo\/username\/([^\/]+)|videoword\/([^\/]+)\/\?wd=([^\/]+)|videolist\/([^\/]+)) script-path=https://raw.githubusercontent.com/SheepFJ/VidSheep/refs/heads/main/VidSheep2.0/main/api.js,requires-body=false,tag=VidSheepApi2.0
 [mitm]
 hostname = api.sheep.com
 
