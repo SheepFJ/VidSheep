@@ -77,6 +77,8 @@ function handleMain() {
     <meta name="apple-mobile-web-app-title" content="VidSheep">
     <title>VidSheep</title>
     <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_4885201_q3amtgf1jhl.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/SheepFJ/VidSheep/VidSheep3.0/css/main.css">
+    
 </head>
 <style>
     #background {
@@ -313,7 +315,7 @@ function handleMain() {
     //api数据定义
     const announcement = ${vidSheepUserinfoData.announcement}; //1的时候显示公告,0则隐藏
     </script>
-    <script src=""></script>
+    <script src="https://cdn.jsdelivr.net/gh/SheepFJ/VidSheep/VidSheep3.0/js/page.js"></script>
 </body>
 
 </html>`;
