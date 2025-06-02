@@ -31,6 +31,7 @@ document.getElementById('iframe-popup-close').addEventListener('click', function
     document.getElementById('iframe-popup-overlay').style.display = 'none';
     document.getElementById('iframe-popup').style.display = 'none';
     iframepopupbutton.innerHTML = '分享';
+    iframepopupiframe.src = ''; 
 });
 // 分享按钮点击事件
 iframepopupbutton.addEventListener('click', function () {
