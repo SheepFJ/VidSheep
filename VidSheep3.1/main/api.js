@@ -581,7 +581,7 @@ function handleMain() {
         </div>
 
         <!-- 占顶 -->
-        <div style="background-color: rgba(0, 0, 0, 0.4); height: 35%;"></div>
+        <div style=" height: 35%;"></div>
     </div>
 
     <!-- 底部导航栏@000010 -->
