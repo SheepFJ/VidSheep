@@ -1,17 +1,15 @@
 /*************************************
-项目名称：VidSheep
-更新日期：2025-04-01
+项目名称：VidSheep3.0
+更新日期：2025-05-21
 脚本作者：@Sheepfj
-使用声明：⚠️仅供参考，🈲转载与售卖！
+使用声明：⚠️所有资源来源于互联网，仅供学习参考，🈲转载与售卖！
 TG频道：https://t.me/sheep_007xiaoyang
-GitHub：https://github.com/SheepFJ/QuantumultX
-脚本说明：用于PKC插件的视频与文本接口
+GitHub：https://github.com/SheepFJ/VidSheep
+脚本说明：VidSheep由作者收集网络视频资源后重写出视频播放界面
 ============ Quantumult X ============
 
 [rewrite_local]
-^https:\/\/api\.sheep\.com\/sheep\/videoPolymerization\/?$ url script-response-body https://raw.githubusercontent.com/SheepFJ/VidSheep/refs/heads/main/VidSheep2.0/main/mainlogic.js
-^https:\/\/api\.sheep\.com\/sheep\/videoPolymerization\/(api|userinfo\/username\/([^\/]+)|videoword\/([^\/]+)\/\?wd=([^\/]+)|videolist\/([^\/]+)) url script-response-body https://raw.githubusercontent.com/SheepFJ/VidSheep/refs/heads/main/VidSheep2.0/main/api.js
-
+^https:\/\/api\.sheep\.com\/sheep\/VidSheep\/ url script-response-body https://raw.githubusercontent.com/SheepFJ/VidSheep/refs/heads/main/VidSheep3.1/main/api.js
 [mitm]
 hostname = api.sheep.com
 
