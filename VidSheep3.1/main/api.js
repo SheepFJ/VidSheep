@@ -330,7 +330,7 @@ function handleMain() {
     </div>
 
     <!-- 占顶 -->
-    <div style="background-color: rgba(0, 0, 0, 0.7); height: 5%;"></div>
+    <div style="height: 5%;"></div>
 
 
     <!-- 公告 -->
@@ -482,7 +482,7 @@ function handleMain() {
 
     <div id="main-container">
         <!-- 占顶 -->
-        <div style="background-color: rgba(0, 0, 0, 0.4); height: 6%;"></div>
+        <div style="height: 6%;"></div>
 
         <!-- 搜索@000006     -->
         <div id="search-section" class="content-section active">
