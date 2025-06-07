@@ -9,7 +9,7 @@ GitHub：https://github.com/SheepFJ/VidSheep
 ================ Loon==============
 
 [Script]
-http-response ^https:\/\/api\.sheep\.com\/sheep\/VidSheep\/ script-path=https://raw.githubusercontent.com/SheepFJ/VidSheep/refs/heads/main/VidSheep3.0/main/api.js,requires-body=false,tag=VidSheep3.0
+http-response ^https:\/\/api\.sheep\.com\/sheep\/VidSheep\/ script-path=https://raw.githubusercontent.com/SheepFJ/VidSheep/refs/heads/main/VidSheep3.1/main/api.js,requires-body=false,tag=VidSheep3.0
 [mitm]
 hostname = api.sheep.com
 
