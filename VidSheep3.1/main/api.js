@@ -955,5 +955,75 @@ function handleUpdate() {
     }
     return $done(responseStatus("成功", "获取更新信息成功"));
 }
+
+// 获取最近搜索关键词
+function handleSearchKeywords() {
+    const { keywords } = parseUrlToParams(url, ['keywords']);
+
+    if (keywords == "all") {
+        const userSearchKeywords = vidSheepUserinfoData.searchkeywords
+        return $done(responseStatus("成功", userSearchKeywords, userSearchKeywords));
+    }
+
+    if (keywords == "clear") {
+        vidSheepUserinfoData.searchkeywords = []
+        storage.set("vidSheepUserinfo", vidSheepUserinfoData)
+        return $done(responseStatus("成功", "搜索历史清空了"));
+    }
+}
+
+// AI推荐
+function handleClearAI() {
+    const { clearAI } = parseUrlToParams(url, ['clearAI']);
+
+    return new Promise((resolve) => {
+        const requestUrl = "https://omp7djvjwc5rouckyjz3q74nt40bgpgg.lambda-url.us-east-2.on.aws/process";
+        const requestHeaders = {
+            'Accept': `*/*`,
+            'Accept-Encoding': `gzip, deflate, br`,
+            'Connection': `keep-alive`,
+            'Content-Type': `application/json`,
+            'Host': `omp7djvjwc5rouckyjz3q74nt40bgpgg.lambda-url.us-east-2.on.aws`,
+            'User-Agent': `ChatBot%20iOS/1 CFNetwork/3826.400.120 Darwin/24.3.0`,
+            'Accept-Language': `zh-CN,zh-Hans;q=0.9`
+        };
+
+        // 简化请求内容，减少数据传输量
+        const requestBody = JSON.stringify({ "model": "gpt-4o", "messages": [{ "role": "system", "content": "你是一个有帮助的助手在 中文（简体） 语言" }, { "role": "user", "content": "推荐" }, { "content": "推荐4部高评分的关于" + clearAI + "的影视剧，仅列出名称，用逗号分隔，不要出现书名号《》等任何其他符号，严格按照如下格式：电视剧名称1，电视剧名称2，电视剧名称3，电视剧名称4", "role": "user" }], "temperature": 1, "stream": false });
+
+        // 统一 HTTP 请求
+        fetchWithCallback({
+            url: requestUrl,
+            method: "POST",
+            headers: requestHeaders,
+            body: requestBody
+        }, (error, response, body) => {
+            if (error) {
+                console.log("AI推荐请求出错: " + error);
+                resolve($done(responseStatus("失败", "AI推荐请求出错")));
+            }
+
+            try {
+                // 使用正则表达式提取所有content值
+                let combinedContent = "";
+                const contentRegex = /"content":"([^"]*)"/g;
+                let match;
+
+                while ((match = contentRegex.exec(body)) !== null) {
+                    combinedContent += match[1];
+                }
+
+                // 将combinedContent中的内容转换为数组
+                const contentArray = combinedContent.trim().split(/[，,]/);
+
+                console.log("AI推荐内容: " + contentArray);
+                resolve($done(responseStatus("成功", "AI推荐成功", contentArray)));
+            } catch (e) {
+                console.log("解析AI响应出错: " + e.message);
+                resolve($done(responseStatus("失败", "解析AI响应出错")));
+            }
+        });
+    });
+}
 // 启动路由分发
 routeRequest(url, routeHandlers);
