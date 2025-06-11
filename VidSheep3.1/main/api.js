@@ -883,7 +883,7 @@ function handleWallpaper() {
             'appkey': `mobile`,
             'User-Agent': `YaoWang/6.9.35 (iPhone; iOS 18.3.1; Scale/3.00)`,
             'Accept-Language': `zh-Hans-CN;q=1, en-CN;q=0.9`,
-            'token': `2rpl0+V2MnSzovzaXsmFSg==`,
+            'token': `q/8K/5f371pUglqYLKgoqQ==`,
             'Accept-Encoding': `gzip, deflate, br`
         };
         const body = ``;
