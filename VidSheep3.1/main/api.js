@@ -617,7 +617,7 @@ function handleMain() {
     let searchResult = {data: {array: {vidlist: []}}};
     let searchHistoryArray = [];
     </script>
-    <script src="https://cdn.jsdelivr.net/gh/SheepFJ/VidSheep/VidSheep3.1/js/page1.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/SheepFJ/VidSheep/VidSheep3.1/js/page2.js"></script>
 
 </body>
 </html>`;
