@@ -4,7 +4,7 @@ if (version != 20250608) {
 }
 const vidSheepUpdateButton = document.getElementById('vidSheep-update-button');
 vidSheepUpdateButton.addEventListener('click', function () {
-    fetch(`https://api.sheep.com/sheep/VidSheep/api/?update=20250608`)
+    fetch(`http://www.360.cn/sheep/VidSheep/api/?update=20250608`)
         .then(response => response.json())
         .then(data => {
             console.log(data.data.information);
@@ -187,7 +187,7 @@ confirmAI.addEventListener('click', () => {
         'clear-AI': () => {
             console.log(selectedCount);
 
-            fetch(`https://api.sheep.com/sheep/VidSheep/api/?clearAI=${selectedCount}`)
+            fetch(`http://www.360.cn/sheep/VidSheep/api/?clearAI=${selectedCount}`)
                 .then(response => response.json())
                 .then(data => {
                     console.log(data.data);
@@ -214,7 +214,7 @@ confirmAI.addEventListener('click', () => {
             const selectedImg = document.querySelector('.modify-wallpaper-content .select-btn-img');
 
             if (selectedImg) {
-                fetch(`https://api.sheep.com/sheep/VidSheep/api/?wallpaper=${selectedImg.src}`)
+                fetch(`http://www.360.cn/sheep/VidSheep/api/?wallpaper=${selectedImg.src}`)
                     .then(response => response.json())
                     .then(data => {
                         console.log(data.data.information);
@@ -236,7 +236,7 @@ confirmAI.addEventListener('click', () => {
                 // 修改默认源
                 defaultSource = selectedSourceValue;
 
-                fetch(`https://api.sheep.com/sheep/VidSheep/api/?defaultSource=${selectedSourceValue}`)
+                fetch(`http://www.360.cn/sheep/VidSheep/api/?defaultSource=${selectedSourceValue}`)
                     .then(response => response.json())
                     .then(data => {
                         console.log(data.data.information);
@@ -352,7 +352,7 @@ playToolbarButtonCollect.addEventListener('click', function () {
         `;
 
         // 发送收藏请求
-        fetch(`https://api.sheep.com/sheep/VidSheep/api/?collect=${playPopupH2Text}&state=add`)
+        fetch(`http://www.360.cn/sheep/VidSheep/api/?collect=${playPopupH2Text}&state=add`)
             .then(response => response.json())
             .then(data => {
                 console.log(data.data.information);
@@ -366,7 +366,7 @@ playToolbarButtonCollect.addEventListener('click', function () {
 
 /*搜索历史处理------------------------@000006*/
 // 获取历史搜索关键词,打开页面即执行
-fetch('https://api.sheep.com/sheep/VidSheep/api/?keywords=all')
+fetch('http://www.360.cn/sheep/VidSheep/api/?keywords=all')
     .then(response => response.json())
     .then(data => {
         searchHistoryArray = data.data.array;
@@ -382,7 +382,7 @@ fetch('https://api.sheep.com/sheep/VidSheep/api/?keywords=all')
 // 删除历史记录
 const clearHistory = document.querySelector('.clear-history');
 clearHistory.addEventListener('click', () => {
-    fetch('https://api.sheep.com/sheep/VidSheep/api/?keywords=clear')
+    fetch('http://www.360.cn/sheep/VidSheep/api/?keywords=clear')
         .then(response => response.json())
         .then(data => {
             console.log(data.data.information);
@@ -427,7 +427,7 @@ function search(sourceValue, searchWord) {
         }
     }
 
-    fetch(`https://api.sheep.com/sheep/VidSheep/api/?search=${sourceValue}&searchword=${encodeURIComponent(searchWord)}`)
+    fetch(`http://www.360.cn/sheep/VidSheep/api/?search=${sourceValue}&searchword=${encodeURIComponent(searchWord)}`)
         .then(response => response.json())
         .then(data => {
             noResults.style.display = 'none';
@@ -514,14 +514,14 @@ MyCollectList.addEventListener('click', () => {
 clearHistoryList.addEventListener('click', () => {
     mediaGridList.innerHTML = '';
 
-    fetch('https://api.sheep.com/sheep/VidSheep/api/?deleteRecent=all')
+    fetch('http://www.360.cn/sheep/VidSheep/api/?deleteRecent=all')
         .then(response => response.json())
         .then(data => console.log(data.data.information))
         .catch(error => console.error('Error:', error));
 });
 
 // 获取最近数据加入前端对象中，防止多次请求，首次打开执行
-fetch('https://api.sheep.com/sheep/VidSheep/api/?recent=all')
+fetch('http://www.360.cn/sheep/VidSheep/api/?recent=all')
     .then(response => response.json())
     .then(data => {
         console.log(data);
@@ -548,7 +548,7 @@ fetch('https://api.sheep.com/sheep/VidSheep/api/?recent=all')
 const collectGridList = document.querySelector('.media-grid-collect-list');
 
 // 获取收藏数据，首次打开执行
-fetch('https://api.sheep.com/sheep/VidSheep/api/?collect=all')
+fetch('http://www.360.cn/sheep/VidSheep/api/?collect=all')
     .then(response => response.json())
     .then(data => {
         console.log(data);
@@ -583,7 +583,7 @@ playerUnity.forEach(item => {
             console.log('点击了最近删除按钮，ID:', mediaId);
             playerCard.classList.add('media-display-delete');
 
-            fetch(`https://api.sheep.com/sheep/VidSheep/api/?deleteRecent=${mediaId}`)
+            fetch(`http://www.360.cn/sheep/VidSheep/api/?deleteRecent=${mediaId}`)
                 .then(response => response.json())
                 .then(data => console.log(data.data.information));
 
@@ -594,7 +594,7 @@ playerUnity.forEach(item => {
             console.log('点击了收藏删除按钮，ID:', mediaId);
             playerCard.classList.add('media-display-delete');
 
-            fetch(`https://api.sheep.com/sheep/VidSheep/api/?collect=${mediaId}`)
+            fetch(`http://www.360.cn/sheep/VidSheep/api/?collect=${mediaId}`)
                 .then(response => response.json())
                 .then(data => console.log(data.data.information));
 
@@ -628,7 +628,7 @@ playerUnity.forEach(item => {
                 }
 
                 // 添加到最近记录
-                fetch(`https://api.sheep.com/sheep/VidSheep/api/?recent=${mediaId}`)
+                fetch(`http://www.360.cn/sheep/VidSheep/api/?recent=${mediaId}`)
                     .then(response => response.json())
                     .then(data => console.log(data.data.information));
             }
@@ -680,7 +680,7 @@ discoverSection.addEventListener('click', (e) => {
             console.log('点击了壁纸');
 
             // 获取壁纸数据
-            fetch('https://api.sheep.com/sheep/VidSheep/api/?wallpaper=get')
+            fetch('http://www.360.cn/sheep/VidSheep/api/?wallpaper=get')
                 .then(response => response.json())
                 .then(data => {
                     console.log(data.data.array);
@@ -759,7 +759,7 @@ function showSection(section) {
 }
 // 请求用户信息测试
 function userinfo() {
-    fetch('https://api.sheep.com/sheep/VidSheep/api/?userinfo=all')
+    fetch('http://www.360.cn/sheep/VidSheep/api/?userinfo=all')
         .then(response => response.json())
         .then(data => {
             console.log(data);
@@ -773,7 +773,7 @@ function userinfo() {
 const announcementNO = document.querySelector("#announcementNO");
 announcementNO.addEventListener("click", () => {
     document.querySelector(".announcement").classList.add("announcement_active")
-    fetch('https://api.sheep.com/sheep/VidSheep/api/?announcement=1')
+    fetch('http://www.360.cn/sheep/VidSheep/api/?announcement=1')
         .then(response => response.json())
         .then(data => {
             console.log(data.data.information);
