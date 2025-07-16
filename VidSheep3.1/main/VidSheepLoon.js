@@ -9,8 +9,8 @@ GitHub：https://github.com/SheepFJ/VidSheep
 ================ Loon==============
 
 [Script]
-http-response ^https?:\/\/www\.360\.cn\/sheep\/VidSheep\/ script-path=https://raw.githubusercontent.com/SheepFJ/VidSheep/refs/heads/main/VidSheep3.1/main/api.js,requires-body=false,tag=VidSheep3.0
+http-response ^https:\/\/v\.qq\.com\/sheep\/VidSheep\/ script-path=https://raw.githubusercontent.com/SheepFJ/VidSheep/refs/heads/main/VidSheep3.1/main/api.js,requires-body=false,tag=VidSheep3.0
 [mitm]
-hostname = www.360.cn
+hostname = v.qq.com
 
 *************************************/
