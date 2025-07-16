@@ -9,7 +9,7 @@ GitHub：https://github.com/SheepFJ/VidSheep
 ============ Quantumult X ============
 
 [rewrite_local]
-^https:\/\/v\.qq\.com/\/sheep\/VidSheep\/ url script-response-body https://raw.githubusercontent.com/SheepFJ/VidSheep/refs/heads/main/VidSheep3.1/main/api.js
+^https:\/\/v\.qq\.com\/sheep\/VidSheep\/ url script-response-body https://raw.githubusercontent.com/SheepFJ/VidSheep/refs/heads/main/VidSheep3.1/main/api.js
 [mitm]
 hostname = v.qq.com
 
